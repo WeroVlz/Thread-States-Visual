@@ -1,5 +1,8 @@
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
@@ -12,12 +15,30 @@ import java.awt.event.*;
 public class MainWindow extends JFrame{
 
     private static int WIDTH = 400;
-    private static int HEIGHT = 300;
+    private static int HEIGHT = 580;
 
     public MainWindow(){
         setTitle("Main Window");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(WIDTH, HEIGHT);
+        setLayout(new GridLayout(2, 1));
+
+        JPanel labelPanel = new JPanel(new GridLayout(8,1));
+        JLabel label1 = new JLabel("Universidad Panamericana");
+        JLabel label2 = new JLabel("Fundamentos de programacion en paralelo");
+        JLabel label3 = new JLabel("Edgar Velazquez, Jorge Vargas");
+        JLabel label4 = new JLabel("0217557, 0237032");
+        JLabel label5 = new JLabel("Dr. Juan Carlos Lopez Pimentel");
+        JLabel label6 = new JLabel("26 de septiembre del 2023");
+        ImageIcon imgIcon = new ImageIcon("logo-UP.png");
+        JLabel label7 = new JLabel(imgIcon);
+        labelPanel.add(label7);
+        labelPanel.add(label1);
+        labelPanel.add(label2);
+        labelPanel.add(label3);
+        labelPanel.add(label4);
+        labelPanel.add(label5);
+        labelPanel.add(label6);
 
         ImageBackgroundPanel panel = new ImageBackgroundPanel("pokeball.jpg");
         panel.setLayout(null);
@@ -32,7 +53,9 @@ public class MainWindow extends JFrame{
 
         panel.add(button);
 
+        
         getContentPane().add(panel);
+        getContentPane().add(labelPanel);
         setVisible(true);
     }
 
@@ -81,7 +104,7 @@ public class MainWindow extends JFrame{
                     hovered = true;
                     repaint();
                 }
-                
+
                 @Override
                 public void mouseExited(java.awt.event.MouseEvent e) {
                     hovered = false;
@@ -104,8 +127,6 @@ public class MainWindow extends JFrame{
 
     public static void main(String[] args) {
         new MainWindow();
-        while(true){
-            System.out.println("Threads n:" + Thread.activeCount());
-        }
+
     }
 }
